@@ -140,9 +140,43 @@ overflow:hidden;
 # Have you used or implemented media queries or mobile specific layouts/CSS?
 # Are you familiar with styling SVG?
 # Can you give an example of an `@media` property other than `screen`?
+1. 首先是<meta>标签
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+```
+2. <head>标签中引入（CSS2 media）
+```
+//例如我们想知道现在的移动设备是不是纵向放置的显示屏，可以这样写：
+<link rel="stylesheet" type="text/css" media="screen and (orientation:portrait)" ;href="style.css">
+//页面宽度小于960的执行指定的样式文件：
+<link rel="stylesheet" type="text/css" media="screen and (max-width:960px)" href="style.css">
+```
+3. 回归CSS3 @media
+```
+@media screen and (max-device-width:960px){
+    body{background:red;}
+
+```
+
+
 # What are some of the "gotchas" for writing efficient CSS?
 # What are the advantages/disadvantages of using CSS preprocessors?
-  # Describe what you like and dislike about the CSS preprocessors you have used.
+CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。
+CSS 预处理器技术已经非常的成熟，而且也涌现出了很多种不同的 CSS 预处理器语言，比如说：Sass（SCSS），LESS，Stylus，Turbine，Swithch CSS，CSS Cacheer，DT CSS
+优点：
+编写时无需考虑浏览器的兼容性问题
+在一处修改就可以全局变化（例如颜色）
+
+缺点：
+依靠预处理器进行任何更新或更改（确保与预处理器和生成的CSS的一致性）
+降低了自己对最终代码的控制力。提高了门上手门槛，其次是维护门槛。
+
+对比Sass（SCSS），LESS，Stylus
+
+Sass、Stylus是在服务区端运行的，而less是在客户端运行的
+Less 的基本语法属于「CSS 风格」
+
+# Describe what you like and dislike about the CSS preprocessors you have used.
 # How would you implement a web design comp that uses non-standard fonts?
 # Explain how a browser determines what elements match a CSS selector.
 # Describe pseudo-elements and discuss what they are used for.
