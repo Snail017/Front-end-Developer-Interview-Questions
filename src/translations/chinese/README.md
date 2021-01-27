@@ -38,11 +38,58 @@ permalink: /translations/chinese/index.html
 * 你最熟悉哪一套版本控制系统？
 * 你能描述当你制作一个网页的工作流程吗？
 * 假若你有 5 个不同的样式文件 (stylesheets), 整合进网站的最好方式是?
+   根据class命名规则写样式，这样样式不会冲突，提取公共的样式，进行合并，非公共的单独拎出来。然后打包压缩一下就行了，若每个文件都很大，就需要分模块加载。
 * 你能描述渐进增强 (progressive enhancement) 和优雅降级 (graceful degradation) 之间的不同吗?
+    ```
+    //优雅降级 ：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
+    .transition{
+      -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+          -o-transition: all .5s;
+              transition: all .5s;  
+    }
+    //渐进增强 :一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
+    .transition{ 
+    　　     transition: all .5s;
+    　　  -o-transition: all .5s;
+      　-moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    }
+    ```
+
 * 你如何对网站的文件和资源进行优化？
+  1. 利用浏览器缓存你的 js 和 CSS 文件：
+  　　在网站根目录 .htaccess 中加入以下代码
+  ```
+  ExpiresActive on
+  ExpiresDefault “access plus 1 year”
+  ```
+  　这段代码的意思是对 jpg|gif|png|css|js 发送 header 缓存头，进行一年的缓存、在浏览器不使用 ctrl+F5 强制刷新时，会一直缓存到时间时间结束，唯一遗憾的是如果你更改了js或者css文件必须把以前的路径或者文件名更改，可以这样 base.js?ver=(x) 这种方式下次浏览器就会自动读取并缓存。
+  2. 把你的 .js 库文件地址替换成 Google CDN的地址
+  3. 精简和优化你的 js 和 CSS
+  4. GZIP 压缩你的 JS 和 CSS 文件
+  5. 使用css sprites合并图片
+  6. 优化你网站图片
+
+
 * 浏览器同一时间可以从一个域名下载多少资源？
-  * 有什么例外吗？
+  [参考](https://www.stevesouders.com/blog/2008/03/20/roundup-on-parallel-connections/)
+  浏览器	 	  HTTP / 1.1	HTTP / 1.0
+  IE 6,7    	  	2           	4
+  IE 8	  		    6           	6
+  Firefox2        2          		8
+  Firefox3      	6           	6
+  Safari 3,4    	4		 	 	 	 	 	 4
+
+* 有什么例外吗？
 * 请说出三种减少页面加载时间的方法。(加载时间指感知的时间或者实际加载时间)
+  1. 优化图片 
+  2. 图像格式的选择（GIF：提供的颜色较少，可用在一些对颜色要求不高的地方）
+  3. 优化CSS（压缩合并css，如margin-top,margin-left...)
+  4. 网址后加斜杠（如www.campr.com/目录，会判断这个“目录是什么文件类型，或者是目录。） 
+  5. 标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。 当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。）
+  6. 减少http请求（合并文件，合并图片）
+  
 * 如果你参与到一个项目中，发现他们使用 Tab 来缩进代码，但是你喜欢空格，你会怎么做？
 * 请写一个简单的幻灯效果页面。
 * 如果今年你打算熟练掌握一项新技术，那会是什么？
