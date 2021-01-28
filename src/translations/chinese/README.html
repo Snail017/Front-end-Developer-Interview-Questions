@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98">前端工作面试问题</h1>
+<p>本文包含了一些用于考查候选者的前端面试问题。不建议对单个候选者问及每个问题 (那需要好几个小时)。只要从列表里挑选一些，就能帮助你考查候选者是否具备所需要的技能。</p>
+<p><strong>备注：</strong> 这些问题中很多都是开放性的，可以引发有趣的讨论。这比直接的答案更能体现此人的能力。</p>
+<h2 id="a-nametoc%E7%9B%AE%E5%BD%95a"><a name='toc'>目录</a></h2>
+<ol>
+<li><a href="#general-questions">常见问题</a></li>
+<li><a href="#html-questions">HTML 相关问题</a></li>
+<li><a href="#css-questions">CSS 相关问题</a></li>
+<li><a href="#js-questions">JS 相关问题</a></li>
+<li><a href="#testing-questions">测试相关问题</a></li>
+<li><a href="#performance-questions">效能相关问题</a></li>
+<li><a href="#network-questions">网络相关问题</a></li>
+<li><a href="#coding-questions">代码相关问题</a></li>
+<li><a href="#fun-questions">趣味问题</a></li>
+</ol>
+<h2 id="%E5%8F%82%E4%B8%8E%E5%8D%8F%E4%BD%9C">参与协作</h2>
+<ol>
+<li><a href="#contributors">贡献者</a></li>
+<li><a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/CONTRIBUTING.md">如何参与贡献</a></li>
+<li><a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/LICENSE.md">许可协议</a></li>
+</ol>
+<h4 id="a-namegeneral-questions%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98a"><a name='general-questions'>常见问题：</a></h4>
+<ul>
+<li>
+<p>你在昨天/本周学到了什么？</p>
+</li>
+<li>
+<p>编写代码的哪些方面能够使你兴奋或感兴趣？</p>
+</li>
+<li>
+<p>你最近遇到过什么技术挑战？你是如何解决的？</p>
+</li>
+<li>
+<p>在制作一个网页应用或网站的过程中，你是如何考虑其 UI、安全性、高性能、SEO、可维护性以及技术因素的？</p>
+</li>
+<li>
+<p>请谈谈你喜欢的开发环境。</p>
+</li>
+<li>
+<p>你最熟悉哪一套版本控制系统？</p>
+</li>
+<li>
+<p>你能描述当你制作一个网页的工作流程吗？</p>
+</li>
+<li>
+<p>假若你有 5 个不同的样式文件 (stylesheets), 整合进网站的最好方式是?
+根据class命名规则写样式，这样样式不会冲突，提取公共的样式，进行合并，非公共的单独拎出来。然后打包压缩一下就行了，若每个文件都很大，就需要分模块加载。</p>
+</li>
+<li>
+<p>你能描述渐进增强 (progressive enhancement) 和优雅降级 (graceful degradation) 之间的不同吗?</p>
+<pre class="hljs"><code><div>//优雅降级 ：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
+.transition{
+  -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+      -o-transition: all .5s;
+          transition: all .5s;  
+}
+//渐进增强 :一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
+.transition{ 
+　　     transition: all .5s;
+　　  -o-transition: all .5s;
+  　-moz-transition: all .5s;
+-webkit-transition: all .5s;
+}
+</div></code></pre>
+</li>
+<li>
+<p>你如何对网站的文件和资源进行优化？</p>
+<ol>
+<li>利用浏览器缓存你的 js 和 CSS 文件：
+　　在网站根目录 .htaccess 中加入以下代码</li>
+</ol>
+<pre class="hljs"><code><div>ExpiresActive on
+ExpiresDefault “access plus 1 year”
+</div></code></pre>
+<p>这段代码的意思是对 jpg|gif|png|css|js 发送 header 缓存头，进行一年的缓存、在浏览器不使用 ctrl+F5 强制刷新时，会一直缓存到时间时间结束，唯一遗憾的是如果你更改了js或者css文件必须把以前的路径或者文件名更改，可以这样 base.js?ver=(x) 这种方式下次浏览器就会自动读取并缓存。
+2. 把你的 .js 库文件地址替换成 Google CDN的地址
+3. 精简和优化你的 js 和 CSS
+4. GZIP 压缩你的 JS 和 CSS 文件
+5. 使用css sprites合并图片
+6. 优化你网站图片</p>
+</li>
+<li>
+<p>浏览器同一时间可以从一个域名下载多少资源？
+<a href="https://www.stevesouders.com/blog/2008/03/20/roundup-on-parallel-connections/">参考</a>
+浏览器	 	  HTTP / 1.1	HTTP / 1.0
+IE 6,7    	  	2           	4
+IE 8	  		    6           	6
+Firefox2        2          		8
+Firefox3      	6           	6
+Safari 3,4    	4		 	 	 	 	 	 4</p>
+</li>
+<li>
+<p>有什么例外吗？</p>
+</li>
+<li>
+<p>请说出三种减少页面加载时间的方法。(加载时间指感知的时间或者实际加载时间)</p>
+<ol>
+<li>优化图片</li>
+<li>图像格式的选择（GIF：提供的颜色较少，可用在一些对颜色要求不高的地方）</li>
+<li>优化CSS（压缩合并css，如margin-top,margin-left...)</li>
+<li>网址后加斜杠（如www.campr.com/目录，会判断这个“目录是什么文件类型，或者是目录。）</li>
+<li>标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。 当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。）</li>
+<li>减少http请求（合并文件，合并图片）</li>
+</ol>
+</li>
+<li>
+<p>如果你参与到一个项目中，发现他们使用 Tab 来缩进代码，但是你喜欢空格，你会怎么做？</p>
+</li>
+<li>
+<p>请写一个简单的幻灯效果页面。</p>
+</li>
+<li>
+<p>如果今年你打算熟练掌握一项新技术，那会是什么？</p>
+</li>
+<li>
+<p>请谈谈你对网页标准和标准制定机构重要性的理解。
+网页标准和标准制定机构都是为了能让web发展的更‘健康’，首先约束浏览器开发者遵循统一的标准，其次约束网站开发者，这样降低开发难度，开发成本，SEO也会更好做，也不会因为滥用代码导致各种BUG、安全问题，最终提高网站易用性。</p>
+</li>
+<li>
+<p>什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？
+如果使用import方法对CSS进行导入,会导致某些页面在Windows 下的Internet Explorer出现一些奇怪的现象:以无样式显示页面内容的瞬间闪烁,这种现象称之为文档样式短暂失效(Flash of Unstyled Content),简称为FOUC。
+原因大致为：</p>
+<ol>
+<li>使用import方法导入样式表。</li>
+<li>将样式表放在页面底部</li>
+<li>有几个样式表，放在html结构的不同位置。
+解决方法：使用LINK标签将样式表放在文档HEAD中。</li>
+</ol>
+</li>
+<li>
+<p>请解释什么是 ARIA 和屏幕阅读器 (screenreaders)，以及如何使网站实现无障碍访问 (accessible)。
+ARIA 为Web app提供满足用户不同需求的解决方案。建设起用户和软件之间的桥梁。
+新的HTML5标准中增加 aria-* 的标签属性，全称Accessible Rich Internet Application。与role标签属性配合使用。
+role属性表示一个非标准的tag的实际作用。比如用div做button，那么设置div 的 role=“button”，辅助工具就可以认出这实际上是个button。而aria-*的作用就是描述这个tag在可视化的情境中的具体信息。
+最简单的应用比如，
+&lt; div role=”checkbox” aria-checked=”checked”&gt;
+辅助工具就会知道，这个div实际上是个checkbox的角色，为选中状态。</p>
+</li>
+<li>
+<p>请解释 CSS 动画和 JavaScript 动画的优缺点。</p>
+</li>
+<li>
+<p>什么是跨域资源共享 (CORS)？它用于解决什么问题？</p>
+</li>
+</ul>
+<h4 id="a-namehtml-questionshtml-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98a"><a name='html-questions'>HTML 相关问题：</a></h4>
+<ul>
+<li><code>doctype</code>(文档类型) 的作用是什么？</li>
+<li>浏览器标准模式 (standards mode) 、几乎标准模式（almost standards mode）和怪异模式 (quirks mode) 之间的区别是什么？</li>
+<li>HTML 和 XHTML 有什么区别？</li>
+<li>如果页面使用 'application/xhtml+xml' 会有什么问题吗？</li>
+<li>如果网页内容需要支持多语言，你会怎么做？</li>
+<li>在设计和开发多语言网站时，有哪些问题你必须要考虑？</li>
+<li>使用 <code>data-</code> 属性的好处是什么？</li>
+<li>如果把 HTML5 看作做一个开放平台，那它的构建模块有哪些？</li>
+<li>请描述 <code>cookies</code>、<code>sessionStorage</code> 和 <code>localStorage</code> 的区别。</li>
+<li>请解释 <code>&lt;script&gt;</code>、<code>&lt;script async&gt;</code> 和 <code>&lt;script defer&gt;</code> 的区别。</li>
+<li>为什么通常推荐将 CSS <code>&lt;link&gt;</code> 放置在 <code>&lt;head&gt;&lt;/head&gt;</code> 之间，而将 JS <code>&lt;script&gt;</code> 放置在 <code>&lt;/body&gt;</code> 之前？你知道有哪些例外吗？</li>
+<li>什么是渐进式渲染 (progressive rendering)？</li>
+<li>你用过哪些不同的 HTML 模板语言？</li>
+</ul>
+<h4 id="a-namecss-questionscss-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98a"><a name='css-questions'>CSS 相关问题：</a></h4>
+<ul>
+<li>CSS 中类 (classes) 和 ID 的区别。</li>
+<li>请问 &quot;resetting&quot; 和 &quot;normalizing&quot; CSS 之间的区别？你会如何选择，为什么？</li>
+<li>请解释浮动 (Floats) 及其工作原理。</li>
+<li>描述<code>z-index</code>和叠加上下文是如何形成的。</li>
+<li>请描述 BFC(Block Formatting Context) 及其如何工作。</li>
+<li>列举不同的清除浮动的技巧，并指出它们各自适用的使用场景。</li>
+<li>请解释 CSS sprites，以及你要如何在页面或网站中实现它。</li>
+<li>你最喜欢的图片替换方法是什么，你如何选择使用。</li>
+<li>你会如何解决特定浏览器的样式问题？</li>
+<li>如何为有功能限制的浏览器提供网页？
+<ul>
+<li>你会使用哪些技术和处理方法？</li>
+</ul>
+</li>
+<li>有哪些的隐藏内容的方法 (如果同时还要保证屏幕阅读器可用呢)？</li>
+<li>你用过栅格系统 (grid system) 吗？如果使用过，你最喜欢哪种？</li>
+<li>你用过媒体查询，或针对移动端的布局/CSS 吗？</li>
+<li>你熟悉 SVG 样式的书写吗？</li>
+<li>如何优化网页的打印样式？</li>
+<li>在书写高效 CSS 时会有哪些问题需要考虑？</li>
+<li>使用 CSS 预处理器的优缺点有哪些？
+<ul>
+<li>请描述你曾经使用过的 CSS 预处理器的优缺点。</li>
+</ul>
+</li>
+<li>如果设计中使用了非标准的字体，你该如何去实现？</li>
+<li>请解释浏览器是如何判断元素是否匹配某个 CSS 选择器？</li>
+<li>请描述伪元素 (pseudo-elements) 及其用途。</li>
+<li>请解释你对盒模型的理解，以及如何在 CSS 中告诉浏览器使用不同的盒模型来渲染你的布局。</li>
+<li>请解释 <code>* { box-sizing: border-box; }</code> 的作用, 并且说明使用它有什么好处？</li>
+<li>请罗列出你所知道的 display 属性的全部值</li>
+<li>请解释 inline 和 inline-block 的区别？</li>
+<li>请解释 relative、fixed、absolute 和 static 元素的区别</li>
+<li>CSS 中字母 'C' 的意思是叠层 (Cascading)。请问在确定样式的过程中优先级是如何决定的 (请举例)？如何有效使用此系统？</li>
+<li>你在开发或生产环境中使用过哪些 CSS 框架？你觉得应该如何改善他们？</li>
+<li>请问你有尝试过 CSS Flexbox 或者 Grid 标准规格吗？</li>
+<li>为什么响应式设计 (responsive design) 和自适应设计 (adaptive design) 不同？</li>
+<li>你有兼容 retina 屏幕的经历吗？如果有，在什么地方使用了何种技术？</li>
+<li>请问为何要使用 <code>translate()</code> 而非 <em>absolute positioning</em>，或反之的理由？为什么？</li>
+</ul>
+<h4 id="a-namejs-questionsjs-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98a"><a name='js-questions'>JS 相关问题：</a></h4>
+<ul>
+<li>请解释事件代理 (event delegation)。</li>
+<li>请解释 JavaScript 中 <code>this</code> 是如何工作的。</li>
+<li>请解释原型继承 (prototypal inheritance) 的原理。</li>
+<li>你怎么看 AMD vs. CommonJS？</li>
+<li>请解释为什么接下来这段代码不是 IIFE (立即调用的函数表达式)：<code>function foo(){ }();</code>.
+<ul>
+<li>要做哪些改动使它变成 IIFE?</li>
+</ul>
+</li>
+<li>描述以下变量的区别：<code>null</code>，<code>undefined</code> 或 <code>undeclared</code>？
+<ul>
+<li>该如何检测它们？</li>
+</ul>
+</li>
+<li>什么是闭包 (closure)，如何使用它，为什么要使用它？</li>
+<li>请举出一个匿名函数的典型用例？</li>
+<li>你是如何组织自己的代码？是使用模块模式，还是使用经典继承的方法？</li>
+<li>请指出 JavaScript 宿主对象 (host objects) 和原生对象 (native objects) 的区别？</li>
+<li>请指出以下代码的区别：<code>function Person(){}</code>、<code>var person = Person()</code>、<code>var person = new Person()</code>？</li>
+<li><code>.call</code> 和 <code>.apply</code> 的区别是什么？</li>
+<li>请解释 <code>Function.prototype.bind</code>？</li>
+<li>在什么时候你会使用 <code>document.write()</code>？</li>
+<li>请指出浏览器特性检测，特性推断和浏览器 UA 字符串嗅探的区别？</li>
+<li>请尽可能详尽的解释 Ajax 的工作原理。</li>
+<li>使用 Ajax 都有哪些优劣？</li>
+<li>请解释 JSONP 的工作原理，以及它为什么不是真正的 Ajax。</li>
+<li>你使用过 JavaScript 模板系统吗？
+<ul>
+<li>如有使用过，请谈谈你都使用过哪些库？</li>
+</ul>
+</li>
+<li>请解释变量声明提升 (hoisting)。</li>
+<li>请描述事件冒泡机制 (event bubbling)。</li>
+<li>&quot;attribute&quot; 和 &quot;property&quot; 的区别是什么？</li>
+<li>为什么扩展 JavaScript 内置对象不是好的做法？</li>
+<li>请指出 document load 和 document DOMContentLoaded 两个事件的区别。</li>
+<li><code>==</code> 和 <code>===</code> 有什么不同？</li>
+<li>请解释 JavaScript 的同源策略 (same-origin policy)。</li>
+<li>如何实现下列代码：</li>
+</ul>
+<pre class="hljs"><code><div>[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>].duplicator(); <span class="hljs-comment">// [1,2,3,4,5,1,2,3,4,5]</span>
+</div></code></pre>
+<ul>
+<li>什么是三元表达式 (Ternary expression)？“三元 (Ternary)” 表示什么意思？</li>
+<li>什么是 <code>&quot;use strict&quot;;</code> ? 使用它的好处和坏处分别是什么？</li>
+<li>请实现一个遍历至 <code>100</code> 的 for loop 循环，在能被 <code>3</code> 整除时输出 <strong>&quot;fizz&quot;</strong>，在能被 <code>5</code> 整除时输出 <strong>&quot;buzz&quot;</strong>，在能同时被 <code>3</code> 和 <code>5</code> 整除时输出 <strong>&quot;fizzbuzz&quot;</strong>。</li>
+<li>为何通常会认为保留网站现有的全局作用域 (global scope) 不去改变它，是较好的选择？</li>
+<li>为何你会使用 <code>load</code> 之类的事件 (event)？此事件有缺点吗？你是否知道其他替代品，以及为何使用它们？</li>
+<li>请解释什么是单页应用 (single page app), 以及如何使其对搜索引擎友好 (SEO-friendly)。</li>
+<li>你使用过 Promises 及其 polyfills 吗? 请写出 Promise 的基本用法（ES6）。</li>
+<li>使用 Promises 而非回调 (callbacks) 优缺点是什么？</li>
+<li>使用一种可以编译成 JavaScript 的语言来写 JavaScript 代码有哪些优缺点？</li>
+<li>你使用哪些工具和技术来调试 JavaScript 代码？</li>
+<li>你会使用怎样的语言结构来遍历对象属性 (object properties) 和数组内容？</li>
+<li>请解释可变 (mutable) 和不变 (immutable) 对象的区别。
+<ul>
+<li>请举出 JavaScript 中一个不变性对象 (immutable object) 的例子？</li>
+<li>不变性 (immutability) 有哪些优缺点？</li>
+<li>如何用你自己的代码来实现不变性 (immutability)？</li>
+</ul>
+</li>
+<li>请解释同步 (synchronous) 和异步 (asynchronous) 函数的区别。</li>
+<li>什么是事件循环 (event loop)？
+<ul>
+<li>请问调用栈 (call stack) 和任务队列 (task queue) 的区别是什么？</li>
+</ul>
+</li>
+<li>解释 <code>function foo() {}</code> 与 <code>var foo = function() {}</code> 用法的区别</li>
+</ul>
+<h4 id="a-nametesting-questions%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98a"><a name='testing-questions'>测试相关问题：</a></h4>
+<ul>
+<li>对代码进行测试的有什么优缺点？</li>
+<li>你会用什么工具测试你的代码功能？</li>
+<li>单元测试与功能/集成测试的区别是什么？</li>
+<li>代码风格 linting 工具的作用是什么？</li>
+</ul>
+<h4 id="a-nameperformance-questions%E6%95%88%E8%83%BD%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98a"><a name='performance-questions'>效能相关问题：</a></h4>
+<ul>
+<li>你会用什么工具来查找代码中的性能问题？</li>
+<li>你会用什么方式来增强网站的页面滚动效能？</li>
+<li>请解释 layout、painting 和 compositing 的区别。</li>
+</ul>
+<h4 id="a-namenetwork-questions%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98a"><a name='network-questions'>网络相关问题：</a></h4>
+<ul>
+<li>为什么传统上利用多个域名来提供网站资源会更有效？</li>
+<li>请尽可能完整得描述从输入 URL 到整个网页加载完毕及显示在屏幕上的整个流程。</li>
+<li>Long-Polling、Websockets 和 Server-Sent Event 之间有什么区别？</li>
+<li>请描述以下 request 和 response headers：
+<ul>
+<li>Diff. between Expires, Date, Age and If-Modified-...</li>
+<li>Do Not Track</li>
+<li>Cache-Control</li>
+<li>Transfer-Encoding</li>
+<li>ETag</li>
+<li>X-Frame-Options</li>
+</ul>
+</li>
+<li>什么是 HTTP method？请罗列出你所知道的所有 HTTP method，并给出解释。</li>
+<li>请解释 HTTP status 301 与 302 的区别？</li>
+</ul>
+<h4 id="a-namecoding-questions%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98a"><a name='coding-questions'>代码相关的问题：</a></h4>
+<p><em>问题：<code>foo</code>的值是什么？</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> foo = <span class="hljs-number">10</span> + <span class="hljs-string">'20'</span>;
+</div></code></pre>
+<p><em>问题：如何实现以下函数？</em></p>
+<pre class="hljs"><code><div>add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>); <span class="hljs-comment">// 7</span>
+add(<span class="hljs-number">2</span>)(<span class="hljs-number">5</span>); <span class="hljs-comment">// 7</span>
+</div></code></pre>
+<p><em>问题：下面的语句的返回值是什么？</em></p>
+<pre class="hljs"><code><div><span class="hljs-string">"i'm a lasagna hog"</span>.split(<span class="hljs-string">""</span>).reverse().join(<span class="hljs-string">""</span>);
+</div></code></pre>
+<p><em>问题：<code>window.foo</code>的值是什么？</em></p>
+<pre class="hljs"><code><div>( <span class="hljs-built_in">window</span>.foo || ( <span class="hljs-built_in">window</span>.foo = <span class="hljs-string">"bar"</span> ) );
+</div></code></pre>
+<p><em>问题：下面两个 alert 的结果是什么？</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> foo = <span class="hljs-string">"Hello"</span>;
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> bar = <span class="hljs-string">" World"</span>;
+  alert(foo + bar);
+})();
+alert(foo + bar);
+</div></code></pre>
+<p><em>问题：<code>foo.length</code>的值是什么？</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> foo = [];
+foo.push(<span class="hljs-number">1</span>);
+foo.push(<span class="hljs-number">2</span>);
+</div></code></pre>
+<p><em>问题：<code>foo.x</code>的值是什么？</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> foo = {<span class="hljs-attr">n</span>: <span class="hljs-number">1</span>};
+<span class="hljs-keyword">var</span> bar = foo;
+foo.x = foo = {<span class="hljs-attr">n</span>: <span class="hljs-number">2</span>};
+</div></code></pre>
+<p><em>问题：下面代码的输出是什么？</em></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'one'</span>);
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'two'</span>);
+}, <span class="hljs-number">0</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'three'</span>);
+</div></code></pre>
+<h4 id="a-namefun-questions%E8%B6%A3%E5%91%B3%E9%97%AE%E9%A2%98a"><a name='fun-questions'>趣味问题：</a></h4>
+<ul>
+<li>你最近写过什么的很酷的项目吗？</li>
+<li>在你使用的开发工具中，最喜欢哪些方面？</li>
+<li>谁使你踏足了前端开发领域？</li>
+<li>你有什么业余项目吗？是哪种类型的？</li>
+<li>你最爱的 IE 特性是什么？</li>
+<li>你对咖啡有没有什么喜好？</li>
+</ul>
+<h4 id="a-namecontributors%E8%B4%A1%E7%8C%AE%E8%80%85a"><a name='contributors'>贡献者：</a></h4>
+<p>本文档始于 2009 年，是以下作者的合作成果：<a href="https://twitter.com/paul_irish">@paul_irish</a> <a href="https://twitter.com/bentruyman">@bentruyman</a> <a href="https://twitter.com/cowboy">@cowboy</a> <a href="https://twitter.com/ajpiano">@ajpiano</a> <a href="https://twitter.com/slexaxton">@SlexAxton</a> <a href="https://twitter.com/boazsender">@boazsender</a> <a href="https://twitter.com/miketaylr">@miketaylr</a> <a href="https://twitter.com/vladikoff">@vladikoff</a> <a href="https://twitter.com/gf3">@gf3</a> <a href="https://twitter.com/jon_neal">@jon_neal</a> <a href="https://twitter.com/sambreed">@sambreed</a> 和 <a href="https://twitter.com/iansym">@iansym</a>。</p>
+<p>时至今日，文档已经融入超过 <a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions/graphs/contributors">100 位开发者</a>的贡献。</p>
+
+</body>
+</html>
